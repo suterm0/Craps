@@ -5,7 +5,7 @@ from random import randint
 
 
 def create():
-    print("How much is your bankroll.")
+    print("Welcome to the game of Craps! How much would you like for your bankroll.")
     bank = int(input(">> "))
     if bank <= 0:
         print("Invalid input. The game will now exit")
@@ -61,26 +61,18 @@ def play_game():
                 print("You lost!")
                 bank = int(bank - bet)
                 print(f"You now have ${bank}")
-                # Not needed : return bank, total, point, bet
-    print("Would you like to play again? 1 for yes, 2 for no:")
-    choice = int(input())
+        if bank == 0:
+            print("You have run out of money would you like to play a new game?")
+            play_again = 2
+            while play_again == 2:
+                play_again = input("Would you like to keep playing? Y for Yes. N for No. (Y/N)? >>")
+                if play_again == 'Y':
+                    play_game()
+                if play_again == 'N':
+                    print("Thanks for playing!")
+                    print("Bye")
+                    exit()
 
-# Not sure you need this function????
-def after_play_game(bank, total, point, bet):
-    while total != point or 7:
-        print("Keep rolling!")
-        roll_dice()
-    if total == point:
-        print("You have won!")
-        bank = int(bank + bet)
-        print(f"You now have ${bank}")
-    elif total == point:
-        print("You lost!")
-        bank = int(bank - bet)
-        print(f"You now have ${bank}")
-
-
-#after_play_game()
 
 print("""
 Welcome to the dice game!
@@ -91,13 +83,3 @@ Rules:
 4. If you roll your point then you win but if you roll a 7 after the first roll you lose
 """)
 play_game()
-
-
-print("Would you like to keep playing? Type Y to start a new game or press N to exit.")
-play_again = input("(Y/N)? >>")
-while play_again == 'y' or 'Y':
-    play_game()
-
-
-print("Thanks for playing!")
-print("Bye")
