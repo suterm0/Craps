@@ -68,6 +68,10 @@ def play_game():
                 play_again = input("Would you like to keep playing? Y for Yes. N for No. (Y/N)? >>")
                 if play_again == 'Y':
                     play_game()
+                else:
+                    print("Thanks for playing!")
+                    print("Bye")
+                    exit()
                 if play_again == 'N':
                     print("Thanks for playing!")
                     print("Bye")
